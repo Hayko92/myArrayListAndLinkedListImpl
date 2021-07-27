@@ -1,47 +1,31 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
-//        MyArrayList<Integer> ob = new MyArrayList<>();
-//        for (int i = 0; i < 20; i++) {
-//            ob.add(i + 2);
-//        }
-//        System.out.println(ob);
-//        System.out.println(ob.size());
-//        System.out.println(ob.get(2));
-//        ob.remove(0);
-//        ob.remove(0);
-//        System.out.println(ob);
-//        System.out.println(ob.size());
-//        System.out.println(ob.contains(18));
-//        System.out.println(ob.contains(22));
         MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
-        for (int i = 0; i < 5; i++) {
+        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        for (int i = 0; i < 10; i++) {
             myLinkedList.add(i);
+            myArrayList.add(i);
         }
-        System.out.println(myLinkedList.getFirst());
-        System.out.println(myLinkedList.getLast());
-        System.out.println(myLinkedList.size());
-        System.out.println(myLinkedList);
-        myLinkedList.remove(0);
-        System.out.println(myLinkedList);
-        myLinkedList.remove(3);
-        System.out.println(myLinkedList);
-        myLinkedList.remove(2);
-        System.out.println(myLinkedList);
-        System.out.println(myLinkedList.contains(1));
-        System.out.println(myLinkedList.contains(5));
-        myLinkedList.add(1,20);
-        System.out.println(myLinkedList);
-        myLinkedList.add(2,30);
-        System.out.println(myLinkedList);
-        myLinkedList.add(1,15);
-        System.out.println(myLinkedList);
-        System.out.println(myLinkedList.get(0));
-        System.out.println(myLinkedList.get(1));
-        System.out.println(myLinkedList.get(2));
-        System.out.println(myLinkedList.get(3));
-        System.out.println(myLinkedList.get(4));
-
-
+        for (int i : myLinkedList) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        for (int i : myArrayList) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        Iterator<Integer> it1 = myArrayList.iterator();
+        Iterator<Integer> it2 = myArrayList.iterator();
+        while (it1.hasNext()) {
+            System.out.print(it1.next()+" ");
+        }
+        System.out.println();
+        while (it2.hasNext()) {
+            System.out.print(it2.next()+" ");
+        }
 
     }
 }

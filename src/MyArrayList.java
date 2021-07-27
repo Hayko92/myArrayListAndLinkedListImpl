@@ -1,7 +1,8 @@
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.function.Consumer;
 
-public class MyArrayList<T> {
+public class MyArrayList<T> implements Iterable<T>{
     // initial capacity==15
     // and my custom Arraylist is growing by 10 when it is full;
     private static final int INITIAL_CAP = 15;
@@ -65,5 +66,31 @@ public class MyArrayList<T> {
             if (i != pointer - 1) res.append(",");
         }
         return res.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int pointer = 0;
+            @Override
+            public boolean hasNext() {
+                return pointer<size();
+            }
+
+            @Override
+            public T next() {
+                return get(pointer++);
+            }
+        };
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+        Iterable.super.forEach(action);
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return Iterable.super.spliterator();
     }
 }

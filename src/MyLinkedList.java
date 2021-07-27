@@ -1,6 +1,8 @@
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-
-public class MyLinkedList<T> {
+public class MyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private int size;
 
@@ -103,6 +105,36 @@ public class MyLinkedList<T> {
             pointer.next = pointer.next.next;
             size--;
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                Node<T> current  = head;
+                return current!=null;
+            }
+
+            @Override
+            public T next() {
+                Node<T> current = head;
+
+                T res =  current.element;
+                head = current.next;
+                return res;
+            }
+        };
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+        Iterable.super.forEach(action);
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return Iterable.super.spliterator();
     }
 
 
