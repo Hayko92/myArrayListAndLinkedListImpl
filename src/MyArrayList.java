@@ -5,6 +5,7 @@ public class MyArrayList<T> {
     // initial capacity==15
     // and my custom Arraylist is growing by 10 when it is full;
     private static final int INITIAL_CAP = 15;
+    private static final double LOAD_FACTOR = 0.75;
     private int pointer = 0;
     private Object[] objects;
 
@@ -15,7 +16,7 @@ public class MyArrayList<T> {
     public void add(T t) {
         objects[pointer] = t;
         pointer++;
-        if (pointer == objects.length) {
+        if ((double)pointer/objects.length>LOAD_FACTOR) {
             growSize();
         }
     }
